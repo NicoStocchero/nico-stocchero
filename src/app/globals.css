@@ -3,6 +3,27 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Nico Stocchero Brand Colors */
+  --color-primary: #3c4966;
+  --color-secondary: #d0c3a5;
+  --color-accent: #fcfcf7;
+  --color-dark: #0d1526;
+
+  /* Extended Palette for UI */
+  --color-primary-light: #6b7a99;
+  --color-secondary-light: #b8a98a;
+  --color-accent-dark: #9a8b6a;
+
+  /* Text Colors for Accessibility */
+  --color-text-primary: #fcfcf7;
+  --color-text-secondary: #e8e8e8;
+  --color-text-tertiary: #d0c3a5;
+
+  /* Light Mode Text Colors */
+  --color-text-primary-light: #3c4966;
+  --color-text-secondary-light: #6b7a99;
+  --color-text-tertiary-light: #9a8b6a;
 }
 
 @theme inline {
@@ -23,4 +44,88 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom Utility Classes for Tailwind v4 */
+@layer utilities {
+  .text-brand-primary {
+    color: var(--color-primary);
+  }
+  .text-brand-secondary {
+    color: var(--color-secondary);
+  }
+  .text-brand-accent {
+    color: var(--color-accent);
+  }
+  .text-brand-dark {
+    color: var(--color-dark);
+  }
+
+  .bg-brand-primary {
+    background-color: var(--color-primary);
+  }
+  .bg-brand-secondary {
+    background-color: var(--color-secondary);
+  }
+  .bg-brand-accent {
+    background-color: var(--color-accent);
+  }
+  .bg-brand-dark {
+    background-color: var(--color-dark);
+  }
+
+  .border-brand-primary {
+    border-color: var(--color-primary);
+  }
+  .border-brand-secondary {
+    border-color: var(--color-secondary);
+  }
+  .border-brand-accent {
+    border-color: var(--color-accent);
+  }
+  .border-brand-dark {
+    border-color: var(--color-dark);
+  }
+
+  /* Extended Palette */
+  .text-brand-primary-light {
+    color: var(--color-primary-light);
+  }
+  .text-brand-secondary-light {
+    color: var(--color-secondary-light);
+  }
+  .text-brand-accent-dark {
+    color: var(--color-accent-dark);
+  }
+
+  .bg-brand-primary-light {
+    background-color: var(--color-primary-light);
+  }
+  .bg-brand-secondary-light {
+    background-color: var(--color-secondary-light);
+  }
+  .bg-brand-accent-dark {
+    background-color: var(--color-accent-dark);
+  }
+
+  /* Text Accessibility Classes */
+  .text-accessible-primary {
+    color: var(--color-text-primary);
+  }
+  .text-accessible-secondary {
+    color: var(--color-text-secondary);
+  }
+  .text-accessible-tertiary {
+    color: var(--color-text-tertiary);
+  }
+
+  .text-accessible-primary-light {
+    color: var(--color-text-primary-light);
+  }
+  .text-accessible-secondary-light {
+    color: var(--color-text-secondary-light);
+  }
+  .text-accessible-tertiary-light {
+    color: var(--color-text-tertiary-light);
+  }
 }
