@@ -37,27 +37,35 @@ export const useTimelineProgress = (
     const handleScroll = () => {
       if (!scrollRef.current) return;
 
-      const element = scrollRef.current;
-      const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const elementTop = rect.top;
-      const elementHeight = rect.height;
+      const container = scrollRef.current;
+      const cards = container.querySelectorAll("[data-index]");
+      let foundIndex = 0;
 
-      // Calculate progress based on scroll position
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const offset = rect.top + rect.height * 0.4; // margen permisivo
+        if (offset < window.innerHeight) {
+          const index = parseInt(card.getAttribute("data-index") || "0", 10);
+          foundIndex = index;
+        }
+      });
+
+      setActiveIndex(foundIndex);
+
+      // Calcular progreso general de la barra
+      const containerRect = container.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
       const scrollProgress = Math.max(
         0,
         Math.min(
           1,
-          (windowHeight - elementTop) / (windowHeight + elementHeight)
+          (windowHeight - containerRect.top) /
+            (windowHeight + containerRect.height)
         )
       );
 
       setProgress(scrollProgress);
       setProgressHeight(scrollProgress * 100);
-
-      // Calculate active index
-      const newActiveIndex = Math.floor(scrollProgress * totalEvents);
-      setActiveIndex(Math.min(newActiveIndex, totalEvents - 1));
     };
 
     window.addEventListener("scroll", handleScroll);

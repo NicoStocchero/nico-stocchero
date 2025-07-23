@@ -30,7 +30,6 @@ export const CSSParallaxTimeline: React.FC<CSSParallaxTimelineProps> = ({
     scrollRef
   );
   const { isDesktop } = useResponsive();
-
   const [openTagIndex, setOpenTagIndex] = useState<number | null>(null);
 
   return (
@@ -50,7 +49,7 @@ export const CSSParallaxTimeline: React.FC<CSSParallaxTimelineProps> = ({
 
       {/* Timeline container */}
       <div className="relative max-w-6xl mx-auto px-4 pb-36">
-        {/* Static line */}
+        {/* Static vertical line */}
         <div
           className={cn(
             "absolute left-1/2 transform -translate-x-1/2 h-full bg-brand-primary/20",
@@ -58,7 +57,7 @@ export const CSSParallaxTimeline: React.FC<CSSParallaxTimelineProps> = ({
           )}
         />
 
-        {/* Animated glow line */}
+        {/* Animated progress line */}
         <motion.div
           className={cn(
             "absolute left-1/2 transform -translate-x-1/2 bg-gradient-to-b from-brand-primary to-brand-secondary rounded-full",
@@ -79,7 +78,7 @@ export const CSSParallaxTimeline: React.FC<CSSParallaxTimelineProps> = ({
           }}
         />
 
-        {/* Soft blur light */}
+        {/* Soft blur glow */}
         <motion.div
           className={cn(
             "absolute left-1/2 transform -translate-x-1/2 rounded-full",
@@ -92,20 +91,24 @@ export const CSSParallaxTimeline: React.FC<CSSParallaxTimelineProps> = ({
           }}
         />
 
-        {/* Events */}
+        {/* Timeline items */}
         <div className="relative flex flex-col gap-y-24 sm:gap-y-20">
           {events.map((event, index) => {
             const tip = timelineTips[index] || {
               text: "UX Tip",
               subtext: "Mejorá la experiencia del usuario.",
             };
-            const isActive = index <= activeIndex;
             const isOpen = openTagIndex === index;
             const side = index % 2 === 0 ? "right" : "left";
+
+            // 👇 Tolerancia para el tag: visible si está cerca del activeIndex
+            const isTagVisible =
+              (isDesktop && activeIndex === index) || activeIndex === index + 1;
 
             return (
               <div
                 key={event.id || index}
+                data-index={index}
                 className="relative flex flex-col items-start scroll-mt-24"
                 style={{
                   transform: `translateY(${index * 10}px)`,
@@ -128,7 +131,7 @@ export const CSSParallaxTimeline: React.FC<CSSParallaxTimelineProps> = ({
                   }
                 />
 
-                {isDesktop && isActive && (
+                {isTagVisible && (
                   <TimelineTag
                     text={tip.text}
                     subtext={tip.subtext}
@@ -144,7 +147,7 @@ export const CSSParallaxTimeline: React.FC<CSSParallaxTimelineProps> = ({
         </div>
       </div>
 
-      {/* Efecto parallax opcional */}
+      {/* Optional 3D hover effect */}
       <style jsx>{`
         @media (min-width: 1024px) {
           .parallax-container {
