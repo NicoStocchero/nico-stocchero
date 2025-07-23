@@ -38,12 +38,18 @@ export const GlowingCards: React.FC<GlowingCardsProps> = ({
       >
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
-            return React.cloneElement(child as React.ReactElement<any>, {
+            // Only pass valid props to GlowingCard components
+            const validProps = {
               enableGlow,
               glowRadius,
               glowOpacity,
               animationDuration,
-            });
+            };
+
+            return React.cloneElement(
+              child as React.ReactElement<any>,
+              validProps
+            );
           }
           return child;
         })}

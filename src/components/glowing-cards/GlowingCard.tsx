@@ -16,6 +16,10 @@ export interface GlowingCardProps {
   title: string;
   description: string;
   features?: Feature[];
+  enableGlow?: boolean;
+  glowRadius?: number;
+  glowOpacity?: number;
+  animationDuration?: number;
 }
 
 export const GlowingCard: React.FC<GlowingCardProps> = ({
@@ -26,6 +30,10 @@ export const GlowingCard: React.FC<GlowingCardProps> = ({
   title,
   description,
   features = [],
+  enableGlow = true,
+  glowRadius = 30,
+  glowOpacity = 0.8,
+  animationDuration = 300,
   ...props
 }) => {
   const {
@@ -41,10 +49,17 @@ export const GlowingCard: React.FC<GlowingCardProps> = ({
     isHovered,
     glowColor,
     mousePosition,
-    intensity: 0.8,
-    radius: 80,
-    opacity: 0.1,
+    intensity: enableGlow ? 0.8 : 0,
+    radius: glowRadius,
+    opacity: glowOpacity,
   });
+
+  // Filter out invalid DOM props
+  const validProps = {
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+    onMouseMove: handleMouseMove,
+  };
 
   return (
     <div
@@ -60,21 +75,21 @@ export const GlowingCard: React.FC<GlowingCardProps> = ({
       style={
         {
           "--glow-color": glowColor,
+          transitionDuration: `${animationDuration}ms`,
         } as React.CSSProperties
       }
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseMove={handleMouseMove}
-      {...props}
+      {...validProps}
     >
       {/* Glow Effect */}
-      <div
-        className={cn(
-          "absolute inset-0 rounded-xl transition-all duration-300",
-          "opacity-0"
-        )}
-        style={glowStyle}
-      />
+      {enableGlow && (
+        <div
+          className={cn(
+            "absolute inset-0 rounded-xl transition-all duration-300",
+            "opacity-0"
+          )}
+          style={glowStyle}
+        />
+      )}
 
       {/* Content */}
       <div className="relative z-10">
