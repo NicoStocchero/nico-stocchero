@@ -3,6 +3,7 @@ export interface Carousel3DItem {
   title: string;
   brand: string;
   description: string;
+  highlight?: string;
   tags: string[];
   imageUrl: string;
   link: string;
