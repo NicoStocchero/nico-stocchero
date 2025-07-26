@@ -20,6 +20,10 @@ import {
   Accessibility,
   Layers,
   FileText,
+  Smartphone,
+  RefreshCw,
+  Settings,
+  CheckCircle,
   // Add more icons as needed
 } from "lucide-react";
 import { IconType, IconConfig } from "./types";
@@ -55,6 +59,13 @@ export class IconService {
       Accessibility,
       Layers,
       FileText,
+      Gauge,
+      Monitor,
+      Smartphone,
+      RefreshCw,
+      Settings,
+      Zap,
+      Crown,
     },
     general: {
       // Add general icons here
@@ -62,6 +73,14 @@ export class IconService {
       Heart,
       Zap,
       Crown,
+      Sparkles,
+      Gauge,
+      Monitor,
+      Eye,
+      Smartphone,
+      RefreshCw,
+      Settings,
+      CheckCircle,
     },
   };
 
