@@ -49,7 +49,7 @@ export const GlowingCard: React.FC<GlowingCardProps> = ({
     isHovered,
     glowColor,
     mousePosition,
-    intensity: enableGlow ? 0.8 : 0,
+    intensity: enableGlow ? 1.2 : 0,
     radius: glowRadius,
     opacity: glowOpacity,
   });
@@ -67,7 +67,7 @@ export const GlowingCard: React.FC<GlowingCardProps> = ({
       className={cn(
         "relative p-6 rounded-xl border border-[#3C4966] bg-[#0D1526]/50 backdrop-blur-sm",
         "transition-all duration-300 ease-out cursor-pointer",
-        "hover:border-opacity-100",
+        "hover:border-opacity-100 hover:scale-[1.02]",
         "dark:border-[#3C4966] dark:bg-[#0D1526]/50",
         "light:border-[#D0C3A5] light:bg-[#FCFCF7]/50",
         className
@@ -85,7 +85,7 @@ export const GlowingCard: React.FC<GlowingCardProps> = ({
         <div
           className={cn(
             "absolute inset-0 rounded-xl transition-all duration-300",
-            "opacity-0"
+            "opacity-0 hover:opacity-100"
           )}
           style={glowStyle}
         />
