@@ -11,7 +11,7 @@ export const PaginationDots: React.FC<{
     <div
       className={cn(
         "absolute left-0 right-0 flex justify-center items-center space-x-3 z-30",
-        isMobile ? "bottom-6" : "bottom-12"
+        isMobile ? "bottom-6" : "bottom-6"
       )}
     >
       {Array.from({ length: totalItems }, (_, idx) => (

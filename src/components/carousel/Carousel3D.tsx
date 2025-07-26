@@ -98,7 +98,7 @@ export const Carousel3D = ({
         <div
           className={cn(
             "relative overflow-hidden",
-            isMobile ? "h-[600px] py-8" : "h-[750px] py-16"
+            isMobile ? "h-[600px] py-8" : "h-[600px] py-16"
           )}
           onMouseEnter={() => !isMobile && setIsHovering(true)}
           onMouseLeave={() => !isMobile && setIsHovering(false)}
