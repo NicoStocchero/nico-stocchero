@@ -84,7 +84,7 @@ export function GradientButton({
 
           .btn-gradient:hover,
           .btn-gradient:hover::before {
-            animation: gradient-animate ${animationSpeed / 4}s infinite linear;
+            animation: gradient-animate ${animationSpeed / 2}s infinite linear;
           }
 
           @keyframes gradient-animate {
@@ -105,7 +105,7 @@ export function GradientButton({
 
       <button
         className={cn(
-          "relative overflow-hidden rounded-full font-semibold transition-all duration-300",
+          "relative overflow-hidden rounded-full font-semibold transition-all duration-300 cursor-pointer",
           "bg-gradient-to-r from-brand-primary to-brand-secondary",
           "text-accessible-primary hover:text-accessible-primary",
           "border-2 border-transparent",
