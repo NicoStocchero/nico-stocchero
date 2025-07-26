@@ -39,7 +39,7 @@ export const CSSParallaxTimeline: React.FC<CSSParallaxTimelineProps> = ({
     >
       {/* Header */}
       <div className="text-center py-16 px-4">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-accessible-primary">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-accessible-primary">
           {title}
         </h2>
         <p className="text-lg text-accessible-secondary max-w-2xl mx-auto">
